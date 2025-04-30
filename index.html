@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion-Smesh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  
+  <div class="logo">
+    <img src="https://i.postimg.cc/TP40sv8L/0001.png" alt="Логотип" />
+  </div>
+  <nav>
+
+
+    
+  
+    
+<a href="limited-collection.html">
+  <button>ЛИМИТИРОВАННАЯ КОЛЛЕКЦИЯ</button>
+</a>
+
+    <button id="client-days-btn">КЛИЕНТСКИЕ ДНИ</button>
+    <button id="promo-btn">АКЦИИ</button>
+  </nav>
+</header>
+
+<main class="main-container">
+  <aside class="catalog">
+    <h3>КАТАЛОГ:</h3>
+    <a href="outerwear.html">
+  <button>Верхняя одежда</button>
+</a>
+ <a href="up.html">
+  <button>Верх</button>
+</a>
+    
+    <a href="niz.html">
+  <button>Низ</button>
+</a>
+    <a href="platya.html">
+  <button>Платья</button>
+</a>
+    <a href="kostum.html">
+  <button>Костюмы</button>
+</a>
+    <a href="obuv.html">
+  <button>Обувь</button>
+</a>
+<a href="sumki.html">
+  <button>Сумки</button>
+</a>
+   
+  </aside>
+
+  <section class="content">
+    <div class="main-banner">
+      <!-- Заменить пустое изображение на подходящий источник -->
+      <img src="https://s1.hostingkartinok.com/uploads/images/2025/04/7ac3c94b7d5ba483f087dcde2be2ce46.jpg" alt="Баннер" />
+    </div>
+  </section>
+</main>
+
+<div id="promo-modal" class="promo-modal">
+  <h2>🔥 АКЦИИ И СКИДКИ 🔥</h2>
+  <div class="promo-item">🎉 Скидка 10% на новую коллекцию!</div>
+  <div class="promo-item">🛍️ Купи 4 вещи — получи 5-ю в подарок!</div>
+  <div class="promo-item">🚚 Бесплатная доставка от 500.000 KZT!</div>
+  <button id="close-promo">Закрыть</button>
+</div>
+
+<div id="client-days-modal" class="client-days-modal">
+  <div class="client-days-item">
+    ✨ Клиентские дни — ваш подарок от нас! ✨<br><br>
+    Дарим приятный бонус в честь вашего Дня рождения! 🎂<br><br>
+    За 3 дня до и 3 дня после праздника получите стильную сумку на 50.000 KZT абсолютно БЕСПЛАТНО! 🎁<br><br>
+    Просто отметьте наш Instagram в сторис или оставьте отзыв на 2ГИС — и подарок ваш!<br><br>
+    Мы ценим вас и хотим сделать этот момент ещё более особенным! 💖
+  </div>
+  <img src="https://media.istockphoto.com/id/1194709851/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%BA%D0%BE%D1%80%D0%BE%D0%B1%D0%BA%D0%B8-%D0%BD%D0%B0-%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D0%BE%D0%BC-%D1%84%D0%BE%D0%BD%D0%B5.jpg?s=612x612&w=0&k=20&c=0j9axHXZQWOHy8LTd2CywPIQaBKbAGrIkFkTiCsPZbQ=" alt="Клиентские дни" />
+  <button id="close-client-days">Закрыть</button>
+</div>
+
+<footer>
+  <p>СВЯЖИТЕСЬ С НАМИ:</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/Fashion-Smesh" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="30" alt="Instagram" /> Instagram
+    </a>
+    <a href="https://wa.me/87082131559" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp" /> WhatsApp
+    </a>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const promoBtn = document.getElementById("promo-btn");
+    const clientDaysBtn = document.getElementById("client-days-btn");
+    const promoModal = document.getElementById("promo-modal");
+    const clientDaysModal = document.getElementById("client-days-modal");
+    const closePromo = document.getElementById("close-promo");
+    const closeClientDays = document.getElementById("close-client-days");
+
+    // Открытие модальных окон
+    promoBtn.addEventListener("click", () => {
+      promoModal.style.display = "block";
+    });
+
+    clientDaysBtn.addEventListener("click", () => {
+      clientDaysModal.style.display = "block";
+    });
+
+    // Закрытие модальных окон
+    closePromo.addEventListener("click", () => {
+      promoModal.style.display = "none";
+    });
+
+    closeClientDays.addEventListener("click", () => {
+      clientDaysModal.style.display = "none";
+    });
+
+    // Закрытие модального окна при клике вне его
+    window.addEventListener("click", (event) => {
+      if (event.target === promoModal) {
+        promoModal.style.display = "none";
+      } else if (event.target === clientDaysModal) {
+        clientDaysModal.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

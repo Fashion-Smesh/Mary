@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Платья</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
+      color: #333;
+    }
+
+    .header {
+      text-align: center;
+      background-color: #f8bbd0;
+      padding: 30px 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+      color: #ad1457;
+      font-size: 2.2rem;
+      margin: 0;
+    }
+
+    .collection {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 30px;
+    }
+
+    .item {
+      width: 300px;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+
+    .item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .item img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+
+    .item-content {
+      padding: 20px;
+    }
+
+    .item h3 {
+      color: #c2185b;
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .item p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #e91e63;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin: 5px 5px 0 0;
+      padding: 10px 20px;
+      background-color: #f06292;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #ec407a;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      background: #fff0f5;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+
+    .remove-button {
+      background-color: #ff1744;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .remove-button:hover {
+      background-color: #d50000;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .item {
+        width: 90%;
+      }
+    }
+
+    #close-outerwear-html {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #ff4d88;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>🌸 Лимитированная коллекция Fashion-Smesh | Michael Kors 🌸</h1>
+</div>
+
+<!-- Кнопки -->
+<div style="position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1001;">
+  <button onclick="openModal('favoritesModal')" class="back-button">Избранное</button>
+  <button onclick="openModal('cartModal')" class="back-button">Корзина</button>
+</div>
+
+
+<div class="collection">
+  <!-- 6 платьев -->
+  <div class="item">
+    <img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/867/583/316/121/318/17/100047166665b0.jpg" alt="Платье 1">
+    <div class="item-content">
+      <h3>Сумка</h3>
+      <p> Роскошная сумка для стильных выходов! ✨
+    Прочная кожа, элегантный дизайн и вместительность — идеальный аксессуар для любого случая. </p>
+      <p class="price">355.000 KZT</p>
+      <button class="back-button" onclick="addItem('favoritesList', this.closest('.item'))">В избранное</button>
+      <button class="back-button" onclick="addItem('cartList', this.closest('.item'))">В корзину</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="https://momsbox.kz/upload/iblock/ded/zddg56xyq9zcxj8mkgs5t62f8j9z6aus/%D0%91%D0%B5%D0%B7-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-5.jpg" alt="Платье 2">
+    <div class="item-content">
+      <h3>Часы</h3>
+      <p>Стильные и элегантные часы для ярких моментов!<br>
+    Идеально подойдут как для повседневного стиля, так и для особых случаев. ✨<br>
+    Золотой блеск и изящный ремешок добавят изысканности вашему образу. </p>
+      <p class="price">250.000 KZT</p>
+      <button class="back-button" onclick="addItem('favoritesList', this.closest('.item'))">В избранное</button>
+      <button class="back-button" onclick="addItem('cartList', this.closest('.item'))">В корзину</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/174/613/986/393/018/41/100056495119b0.jpg" alt="Платье 3">
+    <div class="item-content">
+      <h3>Кошелёк</h3>
+      <p>Элегантный и стильный кошелёк для каждой важной детали вашего дня!
+Идеален как для повседневных образов, так и для особых встреч. 
+Лаконичный дизайн и утончённая отделка подчеркнут вашу индивидуальность и вкус. ✨</p>
+      <p class="price">280.000 KZT</p>
+      <button class="back-button" onclick="addItem('favoritesList', this.closest('.item'))">В избранное</button>
+      <button class="back-button" onclick="addItem('cartList', this.closest('.item'))">В корзину</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="https://resources.cdn-kaspi.kz/img/m/p/h53/haf/70175051153438.jpg?format=gallery-medium" alt="Платье 4">
+    <div class="item-content">
+      <h3>Рюкзак</h3>
+      <p>Стильный и удобный рюкзак для учёбы, работы и путешествий.  
+Лёгкий, вместительный, с продуманными отделениями — всегда в тренде и всегда под рукой!✨</p>
+      <p class="price">550.000 KZT</p>
+      <button class="back-button" onclick="addItem('favoritesList', this.closest('.item'))">В избранное</button>
+      <button class="back-button" onclick="addItem('cartList', this.closest('.item'))">В корзину</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="https://a.lmcdn.ru/product/M/I/MI048AWMCWG6_13446849_5_v1.jpg" alt="Платье 5">
+    <div class="item-content">
+      <h3>Туфли</h3>
+      <p>Элегантные туфли для стильных образов каждый день.  
+Идеальны как для офиса, так и для вечерних выходов.   
+Удобная колодка, изящный дизайн и безупречный вид — шагай с уверенностью и шармом!✨</p>
+      <p class="price">200.000 KZT</p>
+      <button class="back-button" onclick="addItem('favoritesList', this.closest('.item'))">В избранное</button>
+      <button class="back-button" onclick="addItem('cartList', this.closest('.item'))">В корзину</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="https://momsbox.kz/upload/iblock/5bd/0vajp6s37bjwa3wh40scsr3ra3hqqag1/%D0%91%D0%B5%D0%B7%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-13.jpg" alt="Платье 6">
+    <div class="item-content">
+      <h3>Клатч</h3>
+      <p>Изящный клатч, который дополнит любой вечерний образ.  
+Компактный, стильный и удобный — идеально подходит для особых случаев. ✨  
+Тонкая отделка и утончённый дизайн подчеркивают вашу изысканность.</p>
+      <p class="price">350.000 KZT</p>
+      <button class="back-button" onclick="addItem('favoritesList', this.closest('.item'))">В избранное</button>
+      <button class="back-button" onclick="addItem('cartList', this.closest('.item'))">В корзину</button>
+    </div>
+  </div>
+</div>
+<!-- Кнопка закрытия -->
+<button id="close-outerwear-html" onclick="window.history.back();">Закрыть</button>
+
+<!-- Модальные окна -->
+<div id="favoritesModal" class="modal">
+  <div class="modal-content">
+    <h2>Избранное</h2>
+    <div id="favoritesList"></div>
+    <button onclick="clearList('favoritesList')" class="back-button">Очистить всё</button>
+    <button onclick="closeModal('favoritesModal')" class="back-button">Закрыть</button>
+  </div>
+</div>
+
+<div id="cartModal" class="modal">
+  <div class="modal-content">
+    <h2>Корзина</h2>
+    <div id="cartList"></div>
+    <button onclick="clearList('cartList')" class="back-button">Очистить всё</button>
+    <button onclick="closeModal('cartModal')" class="back-button">Закрыть</button>
+
+    <!-- Кнопка оформления заказа -->
+    <button onclick="openOrderModal()" class="back-button">Оформить заказ</button>
+  </div>
+</div>
+
+<!-- Модальное окно оформления заказа -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    
+    <div id="orderList"></div>
+    
+    <h3>Реквизиты карты</h3>
+    <form>
+      <input type="text" class="form-input" placeholder="Номер карты" id="cardNumber" required />
+      <input type="text" class="form-input" placeholder="Срок действия (MM/YY)" id="expiryDate" required />
+      <input type="text" class="form-input" placeholder="CVV" id="cvv" required />
+    </form>
+    
+    <button onclick="closeModal('orderModal')" class="back-button">Закрыть</button>
+    <button class="back-button" onclick="confirmOrder()">Подтвердить заказ</button>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  // Добавить товар в список избранного или корзины
+  function addItem(listId, itemElement) {
+    const list = document.getElementById(listId);
+    const clone = itemElement.cloneNode(true);
+    const buttons = clone.querySelectorAll("button");
+    buttons.forEach(btn => btn.remove());
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Удалить";
+    removeBtn.className = "remove-button";
+    removeBtn.onclick = () => clone.remove();
+    clone.querySelector('.item-content').appendChild(removeBtn);
+
+    list.appendChild(clone);
+  }
+
+  // Очистить список
+  function clearList(listId) {
+    document.getElementById(listId).innerHTML = '';
+  }
+
+  // Переносим товары из корзины в заказ
+  function addToOrderList() {
+    const cartItems = document.getElementById('cartList').children;
+    const orderList = document.getElementById('orderList');
+    orderList.innerHTML = '';
+
+    Array.from(cartItems).forEach(item => {
+      const orderItem = document.createElement('div');
+      orderItem.textContent = item.querySelector('h3').textContent;
+      orderList.appendChild(orderItem);
+    });
+  }
+
+  // Открыть окно оформления заказа
+  function openOrderModal() {
+    addToOrderList();
+    openModal('orderModal');
+  }
+
+  // Подтверждение заказа
+  function confirmOrder() {
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiryDate = document.getElementById('expiryDate').value;
+    const cvv = document.getElementById('cvv').value;
+
+    if (!cardNumber || !expiryDate || !cvv) {
+      alert("Пожалуйста, заполните все поля реквизитов карты.");
+      return;
+    }
+
+    alert("Ваш заказ успешно оформлен!");
+    closeModal('orderModal');
+  }
+</script>
+</body>
+</html>
+
+
+
+
+<style>
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: left;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+    </style>
+</body>
+</html>
